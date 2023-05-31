@@ -1,0 +1,221 @@
+$danger: #d44a4a;
+$primary: #1790D0;
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .2s ease;
+  opacity: 0;
+  z-index: -1;
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+  }
+
+
+  &__content {
+    position: relative;
+    width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    transform: scale(.5);
+    transition: transform .2s ease;
+
+    &.active {
+      transform: scale(1);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+  
+      img {
+        width: 20px;
+        height: 20px;
+        opacity: .4;
+        transition: opacity .2s ease;
+      }
+
+      &:hover {
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+ul {
+  li {
+    &:not(:first-of-type) {
+      margin-top: 12px;
+    }
+  }
+}
+
+label {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: -7px;
+  left: 5px;
+  color: rgba($color: #333, $alpha: .7);
+  transition: transform .2s ease;
+}
+
+input, select, textarea {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 15px 5px 2px 5px;
+  height: 100%;
+  border: 1px #888 solid;
+  border-radius: 5px;
+  transition: border-color .2s ease;
+
+  &:hover {
+    border-color: #333;
+  }
+
+  &:not(:placeholder-shown) {
+    +.label {
+      color: rgba($color: #333, $alpha: .7);
+      transform: translate3d(-7px, -12px, 0) scale(.75);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+
+    +.label {
+      color: $primary;
+      transform: translate3d(-7px, -12px, 0) scale(.75);
+    }
+  }
+}
+
+input[type=text], input[type=email], textarea {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.textarea {
+  width: 100%;
+
+  label {
+    width: 100%;
+  }
+
+  .label {
+    position: absolute;
+    top: 20px;
+  }
+
+  textarea {
+    margin-top: 12px;
+    min-width: 100%;
+    min-height: 45px;
+
+    &:not(:placeholder-shown) {
+      +.label {
+        color: rgba($color: #333, $alpha: .7);
+        transform: translate3d(-15px, -10px, 0) scale(.75);
+      }
+    }
+
+    &:focus {
+      +.label {
+        color: $primary;
+        transform: translate3d(-15px, -10px, 0) scale(.75);
+      }
+    }
+  }
+}
+
+input[type=submit] {
+  margin-top: 12px;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-type, .select-checkbox, .price {
+  margin-top: 12px;
+}
+
+.select-type {
+  &>div {
+    width: 70%;
+    position: relative;
+    justify-content: flex-end;
+  }
+}
+
+.select-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+select {
+  position: relative;
+  padding: 8px 10px 8px 2px;
+}
+
+*.error {
+  background-color: rgba($color: $danger, $alpha: .2);
+  color: $danger;
+  border-color: $danger;
+}
+
+.submit-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type=submit] {
+  padding: 15px;
+  width: 30%;
+  font-weight: 600;
+  color: #fff;
+  background-color: $primary;
+  border: none;
+  cursor: pointer;
+  transition: background-color .2s ease;
+
+  &:hover {
+    background-color: darken($color: $primary, $amount: 3);
+  }
+
+  &:active {
+    background-color: lighten($color: $primary, $amount: 3);
+  }
+}
